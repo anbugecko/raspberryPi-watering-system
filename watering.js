@@ -11,7 +11,18 @@ var plant2 = {
 };
 
 
-    if(plant1.sensor == 0){ 
+function watering(pumpnr, sense)
+{
+    while (sense == 0 )
+    {
+        pumpnr.write(1); // denne setter gpio på pumpen High
+    }
+    pumpnr.write(0);
+}    
+
+
+
+if(plant1.sensor == 0){ 
         watering(plant1.pump, plant1.sensor);  //sjekker om sensor 1 er HIGH  eller LOW
     } 
 
@@ -21,14 +32,7 @@ var plant2 = {
 
 
 
-    function watering(pumpnr, sense)
-    {
-        while (sense == 0 )
-        {
-            pumpnr.write(1); // denne setter gpio på pumpen High
-        }
-		pumpnr.write(0);
-    }
+
 
 
 
