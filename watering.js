@@ -36,7 +36,7 @@ if(plant1.sensor == 0){
 
 
 
-//note to self
+//note to self 1
 // 1 funksjon for vanning av plante -> feed plante nr og pumpnr til funksjon
 //if funksjon for kall av funksjon
 
