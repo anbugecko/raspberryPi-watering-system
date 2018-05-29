@@ -30,13 +30,13 @@ var plant2 = {
     {
         while (sense == 0 )
         {
-            return pumpnr.write;(1) // denne setter gpio på pumpen High
+            pumpnr.write;(1) // denne setter gpio på pumpen High
         }
         
     }
 
     function dry(pumpnr){
-        return pumpnr.write(0); // denne setter gpio på pumpen Low
+        pumpnr.write(0); // denne setter gpio på pumpen Low
     }
 
 
