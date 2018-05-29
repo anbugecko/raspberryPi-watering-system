@@ -26,9 +26,9 @@ var plant2 = {
 
 
 
-    function watering(pumpnr, sensor)
+    function watering(pumpnr, sense)
     {
-        while (sensor == 1 )
+        while (sense == 1 )
         {
             return pumpnr.write(1) // denne setter gpio på pumpen High
         }
