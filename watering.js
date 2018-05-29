@@ -11,13 +11,13 @@ var plant2 = {
 }
 
 
-    if(plant1.sensor = 0){ 
+    if(plant1.sensor == 0){ 
         watering(plant1.pump, plant1.sensor);  //sjekker om sensor 1 er HIGH  eller LOW
     } else {
         dry(plant1.pump)
     }
 
-    if(plant2.sensor = 0){ 
+    if(plant2.sensor == 0){ 
         watering(plant2.pump, plant2.sensor);  //sjekker om sensor 2 er HIGH eller LOW
     } else {
         dry(plant2.pump)
