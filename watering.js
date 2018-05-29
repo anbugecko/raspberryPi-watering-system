@@ -1,8 +1,8 @@
 var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
 
 var plant1 = {
-    pump = new Gpio(4, 'out'), // definere hvilken raspberry pi pin Pump 1 er på
-    sensor = new Gpio(17, 'in') // definere hvilken raspberry pi pin sensor 1 er på
+    pump = new Gpio(7, 'out'), // definere hvilken raspberry pi pin Pump 1 er på
+    sensor = new Gpio(11, 'in') // definere hvilken raspberry pi pin sensor 1 er på
 }
 
 var plant2 = {
