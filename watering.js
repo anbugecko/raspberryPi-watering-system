@@ -29,7 +29,7 @@ const plantA = {
 };
 
 const plantB = {
-    name: "Plant A",
+    name: "Plant B",
     pump: new Gpio(4, 'out'),
     sensor: new Gpio(17, 'in')
 };
@@ -50,19 +50,22 @@ function checkSensorSate() {
         watering(plantA.name, plantA.pump, plantA.sensor);
         
         client.on('connect', function () {
-            client.subscribe('plants')
-            client.publish('plants', plantA.name + ' 1')
+            client.publish(plantA.name, '1')
             client.end()
           })
 
     } else if (plantB.sensor === 0) {
-        watering(plantB.pump, plantB.sensor);
+        watering(plantB.name, plantB.pump, plantB.sensor);
+
+        client.on('connect', function () {
+            client.publish(plantB.name, '1')
+            client.end()
+          })
       
     } else {
         console.log("All is well");
         
         client.on('connect', function () {
-            client.subscribe('plants')
             client.publish('plants', 'All is well')
             client.end()
           })
