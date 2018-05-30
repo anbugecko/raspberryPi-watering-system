@@ -1,4 +1,5 @@
-var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
+//var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
+
 
 var plant1 = {
     pump : new Gpio(7, 'out'), // definere hvilken raspberry pi pin Pump 1 er på
@@ -11,7 +12,7 @@ var plant2 = {
 };
 
 
-function watering(pumpnr, sense)
+function watering (pumpnr, sense)
 {
     while (sense == 0 )
     {
