@@ -76,7 +76,7 @@ const plantH = {
 
 function watering(pump, sensor) 
 {
-    while (sensor === 0) {
+    while (sensor.read === 0) {
         pump.write(1);
     }
     pump.write(0);
@@ -86,7 +86,7 @@ function watering(pump, sensor)
 
 
 function checkSensorSate() {
-    if (plantA.sensor === 0) {
+    if (plantA.sensor.read === 0) {
         watering(plantA.name, plantA.pump, plantA.sensor);
         
         client.on('connect', function () {
@@ -94,7 +94,7 @@ function checkSensorSate() {
             client.end()
           })
 
-    } else if (plantB.sensor === 0) {
+    } else if (plantB.sensor.read === 0) {
         watering(plantB.name, plantB.pump, plantB.sensor);
 
         client.on('connect', function () {
