@@ -66,7 +66,7 @@ function checkSensorSate() {
         console.log("Plants propperly watered"); 
         
         client.on('connect', function () {
-            client.publish('plants', 'All is well')
+            client.publish('plants', 'Plants propperly watered')
             client.end()
           })
            
