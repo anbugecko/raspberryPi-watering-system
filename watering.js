@@ -76,7 +76,7 @@ const plantH = {
 
 function watering(pump, sensor) 
 {
-    while (sensor.read === 0) {
+    while (sensor.readSync === 0) {
         pump.write(1);
     }
     pump.write(0);
@@ -86,7 +86,7 @@ function watering(pump, sensor)
 
 
 function checkSensorSate() {
-    if (plantA.sensor.read === 0) {
+    if (plantA.sensor.readSync === 0) {
         watering(plantA.name, plantA.pump, plantA.sensor);
         
         client.on('connect', function () {
@@ -94,7 +94,7 @@ function checkSensorSate() {
             client.end()
           })
 
-    } else if (plantB.sensor.read === 0) {
+    } else if (plantB.sensor.readSync === 0) {
         watering(plantB.name, plantB.pump, plantB.sensor);
 
         client.on('connect', function () {
@@ -102,7 +102,7 @@ function checkSensorSate() {
             client.end()
           })
 
-    } else if (plantC.sensor === 0) {
+    } else if (plantC.sensor.readSync === 0) {
         watering(plantC.name, plantC.pump, plantC.sensor);
 
         client.on('connect', function () {
@@ -110,7 +110,7 @@ function checkSensorSate() {
             client.end()
             })
             
-    } else if (plantD.sensor === 0) {
+    } else if (plantD.sensor.readSync === 0) {
         watering(plantD.name, plantD.pump, plantD.sensor);
 
         client.on('connect', function () {
@@ -118,7 +118,7 @@ function checkSensorSate() {
             client.end()
             })    
         
-    } else if (plantE.sensor === 0) {
+    } else if (plantE.sensor.readSync === 0) {
         watering(plantE.name, plantE.pump, plantE.sensor);
 
         client.on('connect', function () {
@@ -126,7 +126,7 @@ function checkSensorSate() {
             client.end()
             })     
             
-    } else if (plantF.sensor === 0) {
+    } else if (plantF.sensor.readSync === 0) {
         watering(plantF.name, plantF.pump, plantF.sensor);
 
         client.on('connect', function () {
@@ -134,7 +134,7 @@ function checkSensorSate() {
             client.end()
             })            
 
-    } else if (plantG.sensor === 0) {
+    } else if (plantG.sensor.readSync === 0) {
         watering(plantG.name, plantG.pump, plantG.sensor);
 
         client.on('connect', function () {
@@ -142,7 +142,7 @@ function checkSensorSate() {
             client.end()
             })    
 
-    } else if (plantH.sensor === 0) {
+    } else if (plantH.sensor.readSync === 0) {
         watering(plantH.name, plantH.pump, plantH.sensor);
 
         client.on('connect', function () {
