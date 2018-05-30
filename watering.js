@@ -1,42 +1,73 @@
-var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
+// will only use ES6..
+"use strict";
 
-var plant1 = {
-    pump : new Gpio(7, 'out'), // definere hvilken raspberry pi pin Pump 1 er på
-    sensor : new Gpio(11, 'in') // definere hvilken raspberry pi pin sensor 1 er på
+// can we resolve module 'onoff'?
+try {
+    console.log(require.resolve('onoff'));
+} catch (e) {
+    console.error('onoff is not found');
+    process.exit(e);
+}
+
+try {
+    console.log(require.resolve('mqtt'));
+} catch (e) {
+    console.error('mqtt is not found');
+    process.exit(e);
+}
+
+// load module in scope..
+const Gpio = require('onoff').Gpio;
+var mqtt = require('mqtt')
+var client  = mqtt.connect('mqtt://192.168.1.3')
+
+// properties to define GPIO pin for pumps and sensors
+const plantA = {
+    name: "Plant A",
+    pump: new Gpio(2, 'out'),
+    sensor: new Gpio(14, 'in')
 };
 
-var plant2 = {
-    pump : new Gpio(4, 'out'), // definere hvilken raspberry pi pin Pump 2 er på
-    sensor : new Gpio(17, 'in') // definere hvilken raspberry pi pin sensor 2 er på
+const plantB = {
+    name: "Plant B",
+    pump: new Gpio(3, 'out'),
+    sensor: new Gpio(15, 'in')
 };
 
-
-function watering(pumpnr, sense)
+function watering(pump, sensor) 
 {
-    while (sense == 0 )
-    {
-        pumpnr.write(1); // denne setter gpio på pumpen High
+    while (sensor.readSync === 0) {
+        pump.write(1);
     }
-    pumpnr.write(0);
-}    
+    pump.write(0);
+}
 
+function checkSensorSate() {
+    if (plantA.sensor.readSync === 0) {
+        watering(plantA.name, plantA.pump, plantA.sensor);
+        
+        client.on('connect', function () {
+            client.publish(plantA.name, '1')
+            client.end()
+          })
 
+    } else if (plantB.sensor.readSync === 0) {
+        watering(plantB.name, plantB.pump, plantB.sensor);
 
-if(plant1.sensor == 0){ 
-        watering(plant1.pump, plant1.sensor);  //sjekker om sensor 1 er HIGH  eller LOW
-    } 
+        client.on('connect', function () {
+            client.publish(plantB.name, '1')
+            client.end()
+          })
+                 
 
-    if(plant2.sensor == 0){ 
-        watering(plant2.pump, plant2.sensor);  //sjekker om sensor 2 er HIGH eller LOW
-    } 
+    } else {
+        console.log("Plants properly watered"); 
+        client.on('connect', function () {
+            client.publish('plants', 'Everything ok')
+            client.end()
+            })     
+    }
 
+}
 
-
-
-
-
-
-//note to self
-// 1 funksjon for vanning av plante -> feed plante nr og pumpnr til funksjon
-//if funksjon for kall av funksjon
-
+checkSensorSate();

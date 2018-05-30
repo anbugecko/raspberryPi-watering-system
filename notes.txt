@@ -1,0 +1,90 @@
+
+    
+    const plantC = {
+    name: "Plant C",
+    pump: new Gpio(4, 'out'),
+    sensor: new Gpio(18, 'in')
+};
+
+
+const plantD = {
+    name: "Plant D",
+    pump: new Gpio(17, 'out'),
+    sensor: new Gpio(23, 'in')
+};
+
+
+const plantE = {
+    name: "Plant E",
+    pump: new Gpio(27, 'out'),
+    sensor: new Gpio(24, 'in')
+};
+
+
+const plantF = {
+    name: "Plant F",
+    pump: new Gpio(22, 'out'),
+    sensor: new Gpio(25, 'in')
+};
+
+const plantG = {
+    name: "Plant G",
+    pump: new Gpio(10, 'out'),
+    sensor: new Gpio(8, 'in')
+};
+
+const plantH = {
+    name: "Plant H",
+    pump: new Gpio(9, 'out'),
+    sensor: new Gpio(7, 'in')
+};
+    
+    rest of if
+    
+    } else if (plantC.sensor.readSync === 0) {
+        watering(plantC.name, plantC.pump, plantC.sensor);
+
+        client.on('connect', function () {
+            client.publish(plantC.name, '1')
+            client.end()
+            })
+            
+    } else if (plantD.sensor.readSync === 0) {
+        watering(plantD.name, plantD.pump, plantD.sensor);
+
+        client.on('connect', function () {
+            client.publish(plantD.name, '1')
+            client.end()
+            })    
+        
+    } else if (plantE.sensor.readSync === 0) {
+        watering(plantE.name, plantE.pump, plantE.sensor);
+
+        client.on('connect', function () {
+            client.publish(plantE.name, '1')
+            client.end()
+            })     
+            
+    } else if (plantF.sensor.readSync === 0) {
+        watering(plantF.name, plantF.pump, plantF.sensor);
+
+        client.on('connect', function () {
+            client.publish(plantF.name, '1')
+            client.end()
+            })            
+
+    } else if (plantG.sensor.readSync === 0) {
+        watering(plantG.name, plantG.pump, plantG.sensor);
+
+        client.on('connect', function () {
+            client.publish(plantG.name, '1')
+            client.end()
+            })    
+
+    } else if (plantH.sensor.readSync === 0) {
+        watering(plantH.name, plantH.pump, plantH.sensor);
+
+        client.on('connect', function () {
+            client.publish(plantH.name, '1')
+            client.end()
+            })   
