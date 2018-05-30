@@ -152,6 +152,10 @@ function checkSensorSate() {
 
     } else {
         console.log("Plants properly watered"); 
+        client.on('connect', function () {
+            client.publish('plants', 'Everything ok')
+            client.end()
+            })     
     }
 
 }
