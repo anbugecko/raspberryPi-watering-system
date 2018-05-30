@@ -63,7 +63,7 @@ function checkSensorSate() {
           })
       
     } else {
-        console.log("Plants propperly watered"); 
+        console.log("Plants properly watered"); 
     }
 
 }
