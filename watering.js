@@ -63,7 +63,7 @@ function checkSensorSate() {
           })
       
     } else {
-        console.log("All is well");
+        console.log("All is well"); // test
         
         client.on('connect', function () {
             client.publish('plants', 'All is well')
