@@ -63,7 +63,7 @@ function checkSensorSate() {
           })
       
     } else {
-        console.log("All is well"); // test
+        console.log("Plants propperly watered"); 
         
         client.on('connect', function () {
             client.publish('plants', 'All is well')
